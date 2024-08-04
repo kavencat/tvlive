@@ -8,9 +8,8 @@ jobs:
   build:
     name: update live files by ${{ github.actor }}
     runs-on: ubuntu-latest
-
-  - name: Remove unused packages
-      if: env.REMOVE_UNUSED_PACKAGES == 'true'
+    steps:
+    - name: Remove unused packages
       uses: jlumbroso/free-disk-space@main
       with:
         tool-cache: ture
