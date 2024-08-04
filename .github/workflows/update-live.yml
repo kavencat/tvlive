@@ -19,6 +19,7 @@ jobs:
          pip3 install opencv-python
          pip3 install bs4
          pip3 install translate
+         sudo apt-get install ffmpeg
          python3 udp_iptv3.0.py
          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
          git am -s "update:"${{ env.BUILD_TIME }}
