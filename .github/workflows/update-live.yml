@@ -1,0 +1,22 @@
+name: update-lives
+on:
+  push:
+  
+  workflow_dispatch:
+  
+jobs:
+  build:
+    name: update live files by ${{ github.actor }}
+    runs-on: ubuntu-latest
+
+  - name: Remove unused packages
+      if: env.REMOVE_UNUSED_PACKAGES == 'true'
+      uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: ture
+        android: false
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: false
