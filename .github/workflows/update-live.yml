@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.2
-    - name: Prepare Configuration
+    - name: Prepare Configuration & update files
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -19,7 +19,12 @@ jobs:
          pip3 install opencv-python
          pip3 install bs4
          pip3 install translate
-         sudo apt-get install ffmpeg
+         sudo apt-get install ffmpeg git
+         git config --global user.email "shi772425803@163.com"
+         git config --global user.name "kavencat"
          python3 udp_iptv3.0.py
          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
+         git add .
          git am -s "update:"${{ env.BUILD_TIME }}
+         git push
+         
