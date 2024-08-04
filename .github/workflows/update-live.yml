@@ -9,13 +9,8 @@ jobs:
     name: update live files by ${{ github.actor }}
     runs-on: ubuntu-latest
     steps:
-    - name: Remove unused packages
-      uses: jlumbroso/free-disk-space@main
-      with:
-        tool-cache: ture
-        android: false
-        dotnet: true
-        haskell: true
-        large-packages: true
-        docker-images: true
-        swap-storage: false
+    - uses: actions/checkout@v4.1.2
+    - name: Prepare Configuration
+       run: |
+         cd $GITHUB_WORKSPACE
+         ls
